@@ -1,0 +1,97 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jaro:opsz@6..72&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Oswald:wght@200..700&family=Passion+One:wght@400;700;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&family=Sriracha&family=Yuji+Mai&display=swap');
+:root{
+    --cor1: #372991;
+    --cor2:#15142b;
+    --cor3:#ffffff;
+    --cor4:#0ca711;
+    --cor5:#1ca8ff;
+    --cor6:#2c1c97;
+    --cor7:#45a049;
+    --cor8:black;
+}
+body{
+    font-family: 'Jaro', Arial, Helvetica, sans-serif;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background: linear-gradient(180deg, var(--cor1), var(--cor2));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+}
+button{
+    background: var(--cor4);
+    padding: 10px;
+    cursor: pointer;
+    transition: 2s ease-out;
+    margin-top: 20px;
+    width: 70%;
+    padding: 15px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 2px 3px 2px 3px rgba(0, 0, 0, 0.689);
+    color: var(--cor3);
+    position: relative;
+    left: 12%;
+    font-family: "Jaro";
+}
+button:hover{
+    transform: scale(1.1);
+    background: var(--cor7);
+}
+input[type="number"]{
+    width: 90%;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    margin-top: 20px;
+    border: 1px 1px 1px 1px rgba(0, 0, 0, 0.579);
+    font-family: 'Jaro', Arial, Helvetica, sans-serif;
+}
+input[type="number"]:focus{
+    box-shadow: 5px 0px  5px var(--cor5);
+    outline: none;
+}
+.label{
+    font-size: 14px;
+    font-weight: bolder;
+    color: var(--cor3);
+    background-color: rgba(55, 41, 145, 0.894);
+    padding: 10px;
+    border-radius: 5px;
+}
+section{
+    margin: auto;
+    background-color: var(--cor3);
+    padding: 30px;
+    border-radius: 10px;
+    width: 50%;
+}
+h1{
+    text-align: center;
+    color: var(--cor8);
+    font-size: 2.5em;
+}
+form{
+    background: rgba(55, 41, 145, 0.2);
+    padding: 30px;
+    border-radius: 10px
+}
+main{
+    background-color: var(--cor3);
+    color: var(--cor8);
+    border-radius: 10px;
+    padding: 20px;
+    width: 50%;
+    text-align: justify;
+    margin: auto;
+}
+.button{
+    background-color: var(--cor1);
+}
+.button:hover{
+    background-color: var(--cor5);
+}

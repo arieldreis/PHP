@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/*Meu código css*/
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Playwrite+IN:wght@100..400&display=swap');
+:root{
+    --cor1: #372991;
+    --cor2:#15142b;
+    --cor3:#ffffff;
+    --cor4:#0ca711;
+    --cor5:#1ca8ff;
+    --cor6:#2c1c97;
+    --cor7:#45a049;
+    --cor8:black;
+    --cor9: blueviolet;
+}
+body{
+    background: linear-gradient(150deg, var(--cor1), var(--cor2));
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Oswald', Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main{
+    background-color: var(--cor3);
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 100px;
+    width: 50%;
+}
+main > h1{
+    text-align: center;
+    color: var(--cor6);
+}
+form{
+    background-color: rgba(55, 41, 145, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--cor3);
+}
+.label{
+    color: var(--cor8);
+    font-size: 1.1em;
+}
+input[type="number"]{
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: 'Oswald', Helvetica, sans-serif;
+    width: 90%;
+}
+input[type="number"]:focus{
+    outline: none;
+    box-shadow: 2px 1px 1px 2px black;
+}
+button{
+    padding: 20px;
+    background-color: var(--cor7);
+    color: var(--cor3);
+    cursor: pointer;
+    font-family: 'Oswald', Helvetica, sans-serif;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    transition: 2s ease;
+    margin-top: 30px;
+}
+button:hover{
+    transform: scale(1.1);
+}
+section{
+    background-color: var(--cor3);
+    color: var(--cor8);
+    font-weight: bolder;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+section > h2{
+    color: var(--cor9);
+    text-align: center;
+}
+small{
+    color: var(--cor8);
+    background-color: rgba(69, 52, 183, 0.741);
+    padding: 10px;
+    border-radius: 5px;
+}
+#label{
+    color: var(--cor8);
+    background-color: rgba(69, 52, 183, 0.741);
+    padding: 10px;
+    border-radius: 5px;
+}

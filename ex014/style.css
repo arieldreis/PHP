@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+IN:wght@100..400&display=swap');
+body{
+    background: linear-gradient(150deg, blue, violet);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Playwrite India', Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main{
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+input[type="number"]{
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: 'Playwrite India', Helvetica, sans-serif;
+    width: 90%;
+}
+input[type="number"]:focus{
+    outline: none;
+    box-shadow: 2px 1px 1px 0px rgba(2, 198, 198, 0.926);
+}
+button{
+    padding: 20px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    font-family: 'Playwrite India', Helvetica, sans-serif;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    transition: 2s ease;
+}
+button:hover{
+    transform: scale(1.2);
+}
+section{
+    background-color: white;
+    color: black;
+    font-weight: bolder;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+section > h2{
+    color: blueviolet;
+}

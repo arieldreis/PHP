@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO DE PHP</title>
+    <style>
+        body{
+            background: linear-gradient(150deg, green, lightgreen);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        main{
+            background: white;
+            border-radius: 10px;
+            font-style: italic;
+            font-weight: bold;
+            margin-top: 10%;
+            padding: 40px;
+        }
+        input[type="text"]{
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        button{
+            padding: 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+        }
+        input[type="password"]{
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>FORMULÁRIO</h1>
+        <form action="superglobais.php?tipo=Aluno&turno=Noite" method="post">
+            <label for="usuario">USUÁRIO:</label><br>
+            <input type="text" name="usuario" placeholder="DIGITE..."><br>
+            <label for="senha">SENHA:</label><br>
+            <input type="password" name="senha" placeholder="DIGITE..."><br>
+            <button type="submit">ENVIAR</button>
+        </form>
+    </main>
+</body>
+</html>
