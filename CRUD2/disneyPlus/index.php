@@ -12,19 +12,58 @@
         <header>
             <h1>Disney+</h1>
         </header>
-        <form action="" method="post">
+        <form action="conteudo.php" method="post" id="email_form">
             <h2>MyDisney</h2>
-            <h1>Digite o seu e-mail para continuar</h1>
+            <h1 class="fonte">Digite o seu e-mail para continuar</h1>
             <p>Entre no Disney+ com a sua conta MyDisney. Se você não tiver conta, precisará criar uma.</p>
-            <input type="email" name="e_mail" id="e_mail" placeholder="E-mail"><br>
-            <input type="password" name="password" id="password" placeholder="Password"><br>
+            <div class="input-container">
+                <input type="email" name="emailindex" id="e_mail">
+                <label for="e_mail">E-mail</label>
+            </div>
+            <div class="input-container">
+                <input type="password" name="passwordindex" id="password">
+                <label for="password">Password</label>
+            </div>
             <span id="resultado"></span>
-            <button onclick="teste(event)">Continuar</button>
+            <?php
+                include("conexao.php");
+                if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    if(isset($_POST['emailindex']) || isset($_POST['passwordindex'])){
+                        $email = $conexao->real_escape_string($_POST['emailindex']);
+                        $senha = $conexao->real_escape_string($_POST['passwordindex']);
+                        $sqlcode = "SELECT * FROM tabela_disney WHERE email = '$email' AND senha = '$senha'";
+                        $sqlquery = $conexao->query($sqlcode) or die("<span>Falha na execução do sistema de Login: </span>" . $conexao->error);
+                        $quantidade =  $sqlquery->num_rows; // Quantas linhas essa consulta retornou.
+                        if($quantidade == 1){
+                            $tabela_disney = $sqlquery->fetch_assoc();
+                            if(!isset($_SESSION)){
+                                session_start();
+                            }
+                            $_SESSION['id'] = $tabela_disney['id']; // A $_SESSION é uma variavel valida mesmo quando a pessoa troca de página
+                            $_SESSION['nomeuser'] = $tabela_disney['nomeuser'];
+                            header("Location: conteudo.php"); // Redirecionamento de Página
+                        }else{
+                            echo"<span>E-MAIL OU SENHA PODEM ESTAR INCORRETOS!</span>";
+                        }
+                    }
+                }
+            ?>
+            <button onclick="teste()" type="submit">Continuar</button>
             <hr>
             <p>O Disney+ faz parte das empresas do grupo Walt Disney</p>
             <small>
             Com o MyDisney, você pode entrar em serviços e experiências das empresas do grupo Walt Disney, como Disney+, ESPN, Walt Disney World <a href="createaccount.php"> e muito mais.</a>
             </small>
+            <div class="containerImg">
+                <img src="css/disney-logo-png_seeklogo-41972.png" alt="Disney Plus logo">
+                <img src="css/ABC-logo.png" alt="ABC logo">
+                <img src="css/free-espn-logo-icon-download-in-svg-png-gif-file-formats--brand-brands-and-logos-pack-icons-2673814.webp" alt="ESPN logo">
+                <img src="css/marvel.jpg" alt="Marvel logo">
+                <img src="css/star-wars-logo-png_seeklogo-131743.png" alt="Star Wars logo">
+                <img src="css/hulu-logo-black-transparent.png" alt="Hulu Logo">
+                <img src="css/national-geographic-logo-black-and-white.png" alt="National Geographic logo">
+                <img src="css/star-plus-llegara-mexico-agosto_110_0_771_480.webp" alt="Star+ Logo">
+            </div>
         </form>
     </main>
     <footer>
