@@ -1,9 +1,12 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyDisney+ Account</title>
+    <title>Login to Disney+</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="css/disney-1.png" type="image/x-icon">
 </head>
@@ -12,44 +15,24 @@
         <header>
             <h1>Disney+</h1>
         </header>
-        <form action="cad.php" method="post" id="email_form">
+        <form action="testLogin.php" method="post" id="email_form" onsubmit="login(event)">
             <h2>MyDisney</h2>
             <h1 class="fonte">Digite o seu e-mail para continuar</h1>
             <p>Entre no Disney+ com a sua conta MyDisney. Se você não tiver conta, precisará criar uma.</p>
             <div class="input-container">
-                <input type="number" name="identificador" id="identificador">
-                <label for="id">ID</label>
+                <input type="email" name="emailindex" id="e_mail">
+                <label for="e_mail">E-mail</label>
             </div>
             <div class="input-container">
-                <input type="text" name="nome" id="nome">
-                <label for="nome">NOME</label>
-            </div>
-            <div class="input-container">
-                <input type="email" name="email" id="e_mail">
-                <label for="email">E-MAIL</label>
-            </div>
-            <div class="input-container">
-                <input type="password" name="password" id="password">
-                <label for="senha">PASSWORD</label>
-            </div>
-            <div class="input-container">
-                <input type="date" name="nascimento" id="nascimento">
-                <label for="nascimento">NASCIMENTO</label>
-            </div>
-            <div class="input-container">
-                <input type="text" name="nomeusuario" id="nomeusuario">
-                <label for="nomeusuario">NOME USUÁRIO</label>
-            </div>
-            <div class="input-container">
-                <input type="tel" name="telefone" id="telefone" pattern="\(\d{2}\) \d{5}-\d{4}">
-                <label for="telefone">TELEFONE</label>
+                <input type="password" name="passwordindex" id="password">
+                <label for="password">Password</label>
             </div>
             <span id="resultado"></span>
-            <button onclick="teste()" type="submit">Continuar</button>
+            <button type="submit" value="Continuar" name="submit" class="buttons">Continuar</button>
             <hr>
             <p>O Disney+ faz parte das empresas do grupo Walt Disney</p>
             <small>
-            Com o MyDisney, você pode entrar em serviços e experiências das empresas do grupo Walt Disney, como Disney+, ESPN, Walt Disney World  e muito mais.
+            Com o MyDisney, você pode entrar em serviços e experiências das empresas do grupo Walt Disney, como Disney+, ESPN, Walt Disney World <a href="createaccount.php"> e muito mais.</a>
             </small>
             <div class="containerImg">
                 <img src="css/disney-logo-png_seeklogo-41972.png" alt="Disney Plus logo">
@@ -82,6 +65,6 @@
         </p>
         <p>&copy;Disney. Todos os direitos reservados.</p>
     </footer>
-    <script src=""></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login to Disney+</title>
+    <title>MyDisney+ Account</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="css/disney-1.png" type="image/x-icon">
 </head>
@@ -12,47 +12,45 @@
         <header>
             <h1>Disney+</h1>
         </header>
-        <form action="conteudo.php" method="post" id="email_form">
+        <form action="cad.php" method="post" class="email_form" onsubmit="create(event)">
             <h2>MyDisney</h2>
             <h1 class="fonte">Digite o seu e-mail para continuar</h1>
             <p>Entre no Disney+ com a sua conta MyDisney. Se você não tiver conta, precisará criar uma.</p>
+            <!-- <div class="input-container">
+                <input type="number" name="identificador" id="identificador">
+                <label for="id">ID</label>
+            </div> -->
             <div class="input-container">
-                <input type="email" name="emailindex" id="e_mail">
-                <label for="e_mail">E-mail</label>
+                <input type="text" name="nome" id="nome">
+                <label for="nome">NOME</label>
             </div>
             <div class="input-container">
-                <input type="password" name="passwordindex" id="password">
-                <label for="password">Password</label>
+                <input type="email" name="email" id="e_mail">
+                <label for="email">E-MAIL</label>
             </div>
+            <div class="input-container">
+                <input type="password" name="password" id="current-password">
+                <label for="senha">PASSWORD</label>
+            </div>
+            <div class="input-container">
+                <input type="date" name="nascimento" id="nascimento">
+                <label for="nascimento">NASCIMENTO</label>
+            </div>
+            <div class="input-container">
+                <input type="text" name="nomeusuario" id="nomeusuario">
+                <label for="nomeusuario">NOME USUÁRIO</label>
+            </div>
+            <div class="input-container">
+                <input type="tel" name="telefone" id="telefone" pattern="\(\d{2}\) \d{5}-\d{4}">
+                <label for="telefone">TELEFONE</label>
+            </div>
+            <p id="format">Formatação: (xx) xxxxx-xxxx</p>
             <span id="resultado"></span>
-            <?php
-                include("conexao.php");
-                if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    if(isset($_POST['emailindex']) || isset($_POST['passwordindex'])){
-                        $email = $conexao->real_escape_string($_POST['emailindex']);
-                        $senha = $conexao->real_escape_string($_POST['passwordindex']);
-                        $sqlcode = "SELECT * FROM tabela_disney WHERE email = '$email' AND senha = '$senha'";
-                        $sqlquery = $conexao->query($sqlcode) or die("<span>Falha na execução do sistema de Login: </span>" . $conexao->error);
-                        $quantidade =  $sqlquery->num_rows; // Quantas linhas essa consulta retornou.
-                        if($quantidade == 1){
-                            $tabela_disney = $sqlquery->fetch_assoc();
-                            if(!isset($_SESSION)){
-                                session_start();
-                            }
-                            $_SESSION['id'] = $tabela_disney['id']; // A $_SESSION é uma variavel valida mesmo quando a pessoa troca de página
-                            $_SESSION['nomeuser'] = $tabela_disney['nomeuser'];
-                            header("Location: conteudo.php"); // Redirecionamento de Página
-                        }else{
-                            echo"<span>E-MAIL OU SENHA PODEM ESTAR INCORRETOS!</span>";
-                        }
-                    }
-                }
-            ?>
-            <button onclick="teste()" type="submit">Continuar</button>
+            <button type="submit">Continuar</button>
             <hr>
             <p>O Disney+ faz parte das empresas do grupo Walt Disney</p>
             <small>
-            Com o MyDisney, você pode entrar em serviços e experiências das empresas do grupo Walt Disney, como Disney+, ESPN, Walt Disney World <a href="createaccount.php"> e muito mais.</a>
+            Com o MyDisney, você pode entrar em serviços e experiências das empresas do grupo Walt Disney, como Disney+, ESPN, Walt Disney World  e muito mais.
             </small>
             <div class="containerImg">
                 <img src="css/disney-logo-png_seeklogo-41972.png" alt="Disney Plus logo">
@@ -85,6 +83,6 @@
         </p>
         <p>&copy;Disney. Todos os direitos reservados.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="script.js?v=<?php echo time(); ?>"></script>
 </body>
 </html>

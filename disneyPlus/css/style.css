@@ -7,8 +7,8 @@
 :root{
     --cor1: rgb(5, 92, 107);
     --cor2: rgb(5, 25, 41);
-    --cor3: white;
-    --cor4: black;
+    --cor3: #ffffff;
+    --cor4: #000000;
     --cor5: rgb(103, 104, 109);
     --cor6: rgb(233, 235, 240);
 }
@@ -111,7 +111,7 @@ small{
     font-size: 14px;
     color: var(--cor1);
 }
-button{
+.buttons{
     width: 100%;
     padding: 20px;
     border-radius: 30px;
@@ -172,4 +172,8 @@ ul{
 }
 h3{
     color: red;
+}
+#format{
+    color: var(--cor4);
+    margin-bottom: 10px;
 }

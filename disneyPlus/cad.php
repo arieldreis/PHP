@@ -3,44 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo ao Disney+</title>
-    <link rel="stylesheet" href="css/conteudo.css">
+    <title>DISNEY+ Validando os Dados</title>
     <link rel="shortcut icon" href="css/disney-1.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/cad.css">
 </head>
 <body>
     <header>
-        <h1>Bem-vindo ao site da Disney+</h1>
-        <nav>
-            <ul class="listas">
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Filmes</a></li>
-                <li><a href="#">Séries</a></li>
-                <li><a href="#">Minha Conta</a></li>
-                <li><a href="#">Sair</a></li>
-            </ul>
-        </nav>
-        <div class="containerUsuario">
-            <h3>Seja bem-vindo <?php $_SESSION['nomeuser']?></h3>
-        </div>
+        <h1>Disney+</h1>
     </header>
     <main>
-        <div class="content">
-            <h2>RECOMENDAÇÃO PARA VOCÊ</h2>
-            <div class="movies">
-                <div class="movie-item">
-                    <img src="css/filmes_exemplo/deadepool3.jpg" alt="Filme 1">
-                    <button>DEADPOOL 3</button>
-                </div>
-                <div class="movie-item">
-                    <img src="css/filmes_exemplo/demolidor.jpg" alt="Filme 2">
-                    <button>DEMOLIDOR</button>
-                </div>
-                <div class="movie-item">
-                    <img src="css/filmes_exemplo/simpsons.jpg" alt="Filme 3">
-                    <button>SIMPSONS</button>
-                </div>
-            </div>
-        </div>
+        <!-- <h2>As informações aparecem logo abaixo, aguarde...</h2> -->
+        <?php
+            include("conexao.php");
+            if($_SERVER["REQUEST_METHOD"] == "POST"){ // Verifica se o servidor está no metódo post
+                // $ID = $_POST['identificador'];
+                $nome = $_POST['nome'];
+                $email = $_POST['email'];
+                $senha = $_POST['password'];
+                $nascimento = $_POST['nascimento'];
+                $nomeuser = $_POST['nomeusuario'];
+                $telefone = $_POST['telefone'];
+                $mysql = "INSERT INTO tabela_disney (nome, email, senha, nascimento, nomeuser, telefone) VALUES (?, ?, ?, ?, ?, ?)"; // Inseri dados na sua tabela
+                $senha_cripto = password_hash($senha, PASSWORD_DEFAULT); // Deixa a sua senha criptografada.
+                if($stm = $conexao->prepare($mysql)){
+                    $stm->bind_param("ssssss", $nome, $email, $senha_cripto, $nascimento, $nomeuser, $telefone);  // Confere os statement
+                    if($stm->execute()){
+                        echo"<h2>REGISTRO FEITO COM SUCESSO.</h2>";
+                        echo"<p>Para conferir se sua conta foi criada, volta de na página de login e faça o que se pede.</p>";
+                    }else{
+                        echo"<h2>ERRO AO FAZER SEU CADASTRO!</h2>";
+                        echo"<p>Confira se você fez tudo o que se pede, caso ao contrário entre em contato.</p>";
+                    }
+                    $stm->close(); // Fecha o statement
+                }else{
+                    echo"<h2>ERRO AO FAZER A CONSULTA</h2>";
+                    echo"<p>Parece que estamos com algum problema no sistema, aguarde um pouco até arrumarmos esse problema.</p>";
+                }
+            }
+            $conexao->close(); // Fecha o conexão com o banco de dados
+        ?>
+        <button onclick="voltar('index.php')">VOLTAR</button>
     </main>
     <footer>
         <ul>
@@ -60,6 +62,7 @@
         São Paulo/SP - CEP 04578-903, Brasil e CNPJ/M 73.042.962/0004-20
         </p>
         <p>&copy;Disney. Todos os direitos reservados.</p>
-    </footer> 
+    </footer>
+    <script src="scripts/script.js"></script>
 </body>
 </html>
